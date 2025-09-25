@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 int v[100], ok=0, nr, n;
 
@@ -35,18 +36,31 @@ void sortare_vector(int v[], int n){
     }
 }
 
-void nr_prim(int nr, int &ok){
+void nr_prim(int n, int &ok){
     ok=1;
-    for (int i=2; i<=nr/2; i++)
-        if (nr%i==0)
+    for (int i=2; i<=n/2; i++)
+        if (n%i==0)
             ok=0;
 }
 
-int main() {
-    
+int nr_max(int n) {
+    int cnr = n, nrc = 0, maxnr=0;
+    while(cnr){
+        nrc++; cnr /= 10; 
+    }
+    cnr = n;
+    for (int i = 1; i < nrc; i++) {
+        int c = cnr / pow(10, nrc - 1);               
+        cnr = (cnr % int(pow(10, nrc - 1))) * 10 + c;
+        if (cnr > maxnr) maxnr = cnr;
+    }
+    return maxnr;
+}
+
+
+int main(){
     cin>>n;
-    citire_vector(v, n);
-    afisare_vector(v, n);
+    cout<<nr_max(n);
     return 0;
 }
 
