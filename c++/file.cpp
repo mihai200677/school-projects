@@ -57,6 +57,32 @@ int nr_max(int n) {
     return maxnr;
 }
 
+void nr_alaturate() {
+// Se da un sir cu n elemente nr intregi. Sa se numere folosindu-ne de strchr cate cifre exista, iar daca exista pe pozitii consecutive cifre pare sa se elimine astfel incat sa ramana doar una, si anume cea mai mica din cele alaturate pare
+	char s[100], cif[]="1234567890", cifpar[]="24680";
+	cin.get(s, 100);
+	int cnt=0;
+	for (int i=0; i<strlen(s)-1; i++) {
+		if(strchr(cif, s[i])!=NULL)
+			cnt++;
+		if (strchr(cifpar, s[i])!=NULL && strchr(cifpar, s[i+1])!=NULL && i>0) {
+			if(s[i]>s[i+1]) {
+                cout<<"[ ✓ ] Removed "<<s[i+1]<<endl;
+				strcpy(s+i+1, s+i+2);
+				i--;
+			} else {
+                cout<<"[ ✓ ] Removed "<<s[i]<<endl;
+				strcpy(s+i, s+i+1);
+				i--;
+			}
+		}
+
+	}
+
+    cout<<endl<<"[ ! ] Sir rezultat: "<<s;
+}
+
+
 
 int main(){
     cin>>n;
@@ -66,31 +92,3 @@ int main(){
 
 
 
-
-/*
-                            VERIFICARE VECTOR PALINDROM
-cin>>n;
-citire_vector(v, n);
-for (int i=1; i<=n; i++){
-    ok=0;
-    palindrom(v[i], ok);
-    if (ok==0)
-        cout<<"[ ! ] "<<v[i]<<" nu este palindrom"<<endl;
-    else cout<<"[ ✓ ] "<<v[i] <<" este palindrom"<<endl;
-}
-
-*/
-
-
-/*
-                                VERIFICARE VECTOR PRIM
-cin>>n;
-    citire_vector(v, n);
-    for (int i=1; i<=n; i++){
-        nr_prim(v[i], ok);
-            if (ok==0)
-                cout<<"[ ! ] "<<v[i]<<" nu este prim"<<endl;
-            else cout<<"[ ✓ ] "<<v[i] <<" este prim"<<endl;
-    }
-
-*/
