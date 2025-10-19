@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <cstring>
 using namespace std;
 int v[100], ok=0, nr, n;
 
