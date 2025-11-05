@@ -1,3 +1,6 @@
+//SE CITESC N SIRURI DE CUVINTE. SA SE AFISEZE PENTRU FIECARE SIR CATE CUVINTE PALINDROM ARE
+
+
 #include <iostream>
 #include <cstring>
 using namespace std;
